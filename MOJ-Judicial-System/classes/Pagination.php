@@ -1,0 +1,3 @@
+<?php declare(strict_types=1);
+namespace MOJ\JudicialSystem;
+final class Pagination{public function __construct(public int $page=1,public int $perPage=20){$this->page=max(1,$page);$this->perPage=min(100,max(1,$perPage));} public function offset():int{return ($this->page-1)*$this->perPage;} public function pages(int $total):int{return (int)ceil($total/$this->perPage);} public function links(int $total,string $base):string{$html='<nav><ul class="pagination">';for($i=1;$i<=$this->pages($total);$i++){$active=$i===$this->page?' active':'';$html.='<li class="page-item'.$active.'"><a class="page-link" href="'.Helper::e($base.'?page='.$i).'">'.$i.'</a></li>';}$html.='</ul></nav>';return $html;}}

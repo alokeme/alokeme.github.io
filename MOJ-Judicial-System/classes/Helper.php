@@ -1,0 +1,3 @@
+<?php declare(strict_types=1);
+namespace MOJ\JudicialSystem;
+final class Helper{public static function e(?string $v):string{return htmlspecialchars((string)$v,ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');} public static function slug(string $v):string{return trim(preg_replace('/[^\pL\pN]+/u','-',mb_strtolower($v)),'-');} public static function hash(array|string $v):string{return hash('sha256',is_array($v)?json_encode($v,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES):(string)$v);} public static function json(mixed $data,int $code=200):never{http_response_code($code);header('Content-Type: application/json; charset=utf-8');echo json_encode($data,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);exit;}}

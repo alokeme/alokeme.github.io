@@ -1,0 +1,34 @@
+{
+  "name": "moj/judicial-system",
+  "description": "Production-ready PHP 8.3 judicial decisions importer for Saudi MOJ laws gateway",
+  "type": "project",
+  "require": {
+    "php": "^8.3",
+    "guzzlehttp/guzzle": "^7.9",
+    "monolog/monolog": "^3.7",
+    "symfony/dom-crawler": "^7.1",
+    "symfony/css-selector": "^7.1",
+    "phpmailer/phpmailer": "^6.9",
+    "tecnickcom/tcpdf": "^6.7",
+    "phpoffice/phpspreadsheet": "^2.2",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-zip": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "MOJ\\JudicialSystem\\": "classes/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@php -r \"is_dir('logs') || mkdir('logs',0755,true);\""
+    ]
+  },
+  "license": "proprietary"
+}
