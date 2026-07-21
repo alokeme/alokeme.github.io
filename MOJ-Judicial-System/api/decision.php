@@ -1,0 +1,1 @@
+<?php declare(strict_types=1); require __DIR__.'/../includes/bootstrap.php'; use MOJ\JudicialSystem\{Database,Helper,Validator}; $id=Validator::int($_GET['id']??0,1);$s=Database::connect()->prepare('SELECT * FROM judicial_decisions WHERE id=?');$s->execute([$id]);Helper::json($s->fetch()?:['error'=>'Not found'], $s->rowCount()?200:404);

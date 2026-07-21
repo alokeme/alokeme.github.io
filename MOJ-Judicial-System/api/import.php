@@ -1,0 +1,1 @@
+<?php declare(strict_types=1); require __DIR__.'/../includes/bootstrap.php'; use MOJ\JudicialSystem\{Helper,Importer,Security}; Security::verifyCsrf($_POST['_csrf']??null); Helper::json((new Importer())->run($_POST, (int)($_POST['pages']??1)));
